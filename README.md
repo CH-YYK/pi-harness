@@ -1,6 +1,6 @@
 # pi-harness
 
-Modular profile management system & persona harness for the **[Pi Coding Agent](https://github.com/earendil-works/pi-coding-agent)**.
+Modular profile management system & persona harness for the **[Pi Coding Agent](https://github.com/earendil-works/pi-coding-agent)**. Part of the **[Pi-Agent Project](https://github.com/users/CH-YYK/projects/1)** ecosystem.
 
 ---
 
