@@ -1,0 +1,24 @@
+{
+  "name": "pi-harness",
+  "version": "0.1.0",
+  "description": "Pi Coding Agent profile harness with session-locked persona state and dynamic profile tools",
+  "type": "module",
+  "main": "index.ts",
+  "scripts": {
+    "verify": "node scripts/verify.mjs"
+  },
+  "pi": {
+    "extensions": [
+      "index.ts"
+    ]
+  },
+  "keywords": [
+    "pi-extension",
+    "pi-agent",
+    "profiles",
+    "persona",
+    "harness"
+  ],
+  "author": "Kyle",
+  "license": "MIT"
+}

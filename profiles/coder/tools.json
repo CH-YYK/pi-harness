@@ -1,0 +1,20 @@
+{
+  "profile": "coder",
+  "allowedTools": [
+    "read",
+    "bash",
+    "edit",
+    "write",
+    "grep",
+    "find",
+    "ls",
+    "subagent",
+    "git_status"
+  ],
+  "toolConfigs": {
+    "bash": {
+      "timeoutMs": 60000,
+      "disallowedCommands": ["rm -rf /", "mkfs"]
+    }
+  }
+}

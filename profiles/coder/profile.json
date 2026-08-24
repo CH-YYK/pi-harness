@@ -1,0 +1,12 @@
+{
+  "name": "coder",
+  "displayName": "Software Engineer & Architect",
+  "description": "Specialized in software development, refactoring, debugging, git operations, and test-driven implementation.",
+  "version": "1.0.0",
+  "defaultThinkingLevel": "high",
+  "tools": ["read", "bash", "edit", "write", "grep", "find", "ls", "subagent"],
+  "env": {
+    "NODE_ENV": "development"
+  },
+  "sidecars": []
+}
