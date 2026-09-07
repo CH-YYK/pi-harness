@@ -1,24 +1,47 @@
 {
-  "name": "pi-harness",
+  "name": "pi-profile-harness",
   "version": "0.1.0",
-  "description": "Pi Coding Agent profile harness with dynamic profile switching, modular rules, and profile creation tools",
+  "description": "Dynamic profile switching, modular rules, and persona management harness for Pi Coding Agent",
   "type": "module",
   "main": "index.ts",
+  "files": [
+    "index.ts",
+    "README.md",
+    "ARCHITECTURE.md",
+    "LICENSE",
+    "profiles/"
+  ],
   "scripts": {
     "verify": "node scripts/verify.mjs"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/CH-YYK/pi-profile-harness.git"
+  },
+  "homepage": "https://github.com/CH-YYK/pi-profile-harness#readme",
+  "bugs": {
+    "url": "https://github.com/CH-YYK/pi-profile-harness/issues"
+  },
+  "keywords": [
+    "pi-package",
+    "pi-extension",
+    "pi-coding-agent",
+    "profiles",
+    "persona",
+    "harness"
+  ],
+  "peerDependencies": {
+    "@earendil-works/pi-agent-core": "*",
+    "@earendil-works/pi-ai": "*",
+    "@earendil-works/pi-coding-agent": "*",
+    "@earendil-works/pi-tui": "*",
+    "typebox": "*"
   },
   "pi": {
     "extensions": [
       "index.ts"
     ]
   },
-  "keywords": [
-    "pi-extension",
-    "pi-agent",
-    "profiles",
-    "persona",
-    "harness"
-  ],
   "author": "Kyle",
   "license": "MIT"
 }

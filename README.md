@@ -1,4 +1,4 @@
-# pi-harness
+# pi-profile-harness
 
 Modular profile management system & persona harness for the **[Pi Coding Agent](https://github.com/earendil-works/pi-coding-agent)**. Part of the **[Pi-Agent Project](https://github.com/users/CH-YYK/projects/1)** ecosystem.
 
@@ -28,19 +28,20 @@ Modular profile management system & persona harness for the **[Pi Coding Agent](
 
 ## 📦 Installation
 
+### Git (Recommended)
 Install into your global Pi configuration (`~/.pi/agent/settings.json`):
 
 ```json
 {
   "packages": [
-    "git:github.com/CH-YYK/pi-harness"
+    "git:github.com/CH-YYK/pi-profile-harness"
   ]
 }
 ```
 
 Or test transiently:
 ```bash
-pi --extension /path/to/pi-harness/index.ts
+pi --extension /path/to/pi-profile-harness/index.ts
 ```
 
 ---

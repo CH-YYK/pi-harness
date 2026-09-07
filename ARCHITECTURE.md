@@ -1,6 +1,6 @@
-# Pi Agent Harness Architecture
+# Pi Profile Harness Architecture
 
-This document describes the architectural design and subsystems of the **Kyle Pi Agent Harness**.
+This document describes the architectural design and subsystems of the **Pi Profile Harness**.
 
 ---
 
@@ -10,7 +10,7 @@ The harness decouples the **Model Provider**, **Tool Registry**, **Session/Conte
 
 ```
 ┌────────────────────────────────────────────────────────┐
-│                   Pi Agent Harness                     │
+│                  Pi Profile Harness                    │
 ├────────────────┬────────────────────┬──────────────────┤
 │  Model Engine  │   Tool Registry    │ Session & State  │
 │  (Anthropic,   │ (FS, Bash, Search, │ (Context Window, │

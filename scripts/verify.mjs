@@ -12,7 +12,7 @@ const packageRoot = path.resolve(__dirname, "..");
 
 async function runVerify() {
   console.log("==================================================");
-  console.log("🧪 Testing pi-harness Extension Package");
+  console.log("🧪 Testing pi-profile-harness Extension Package");
   console.log("==================================================");
 
   const loader = new DefaultResourceLoader({
@@ -26,16 +26,16 @@ async function runVerify() {
   const harnessExt = extResult.extensions.find((e) => e.path.includes(packageRoot));
 
   if (!harnessExt) {
-    throw new Error("pi-harness extension failed to load!");
+    throw new Error("pi-profile-harness extension failed to load!");
   }
-  console.log("   ✓ pi-harness extension loaded successfully.");
+  console.log("   ✓ pi-profile-harness extension loaded successfully.");
 
   // Test slash commands
   const profilesCmd = harnessExt.commands.get("profiles");
   const profileCmd = harnessExt.commands.get("profile");
 
   if (!profilesCmd || !profileCmd) {
-    throw new Error("Missing /profiles or /profile slash commands in pi-harness!");
+    throw new Error("Missing /profiles or /profile slash commands in pi-profile-harness!");
   }
 
   let notified = "";
@@ -63,7 +63,7 @@ async function runVerify() {
   // Test /switch command
   const switchCmd = harnessExt.commands.get("switch");
   if (!switchCmd) {
-    throw new Error("Missing /switch slash command in pi-harness!");
+    throw new Error("Missing /switch slash command in pi-profile-harness!");
   }
   console.log("   ✓ /switch command registered successfully.");
 
@@ -174,7 +174,7 @@ async function runVerify() {
   }
 
   console.log("==================================================");
-  console.log("✅ pi-harness verification passed!");
+  console.log("✅ pi-profile-harness verification passed!");
   console.log("==================================================");
 }
 
