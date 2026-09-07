@@ -1,8 +1,8 @@
 /**
- * Pi Harness Extension (pi_harness)
+ * Pi Profile Harness Extension (pi_profile_harness)
  *
  * Self-contained profile management system:
- * 1. Bundled prebuilt profiles: `extensions/pi_harness/profiles/<profile_name>/`
+ * 1. Bundled prebuilt profiles: `profiles/<profile_name>/`
  * 2. User custom profiles: `~/.pi/agent/profiles/`, `~/.pi/profiles/`, `<cwd>/.pi/profiles/`
  * 3. Profile-exclusive tools: `profiles/<profile_name>/tools/*.ts`
  *
@@ -317,7 +317,7 @@ export default async function piHarnessExtension(pi: ExtensionAPI) {
           await candidate(pi);
         }
       } catch (err: any) {
-        console.error(`[pi_harness] Failed to load tool from ${toolFilePath}:`, err);
+        console.error(`[pi_profile_harness] Failed to load tool from ${toolFilePath}:`, err);
       }
     }
   }
