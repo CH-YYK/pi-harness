@@ -47,10 +47,20 @@ profiles/
     └── tools.json           # Allowed tools: read, grep, find, ls, subagent, fetch_url
 ```
 
-### Loading & Switching
-- **Factory Pattern**: `ProfileLoader` parses metadata, system prompts, and tool configs.
-- **CLI Switching**: `pi-harness run --profile <name>`
-- **Runtime Interactive Switching**: `/switch <profile>` via `.pi/extensions/profile-switcher.ts` or `harness.switchProfile(name)`.
+### Structure & Rules Organization
+- **Metadata**: `profile.json` defines display names, descriptions, thinking levels, and default tool whitelists.
+- **System Prompt**: `system.md` sets persona identity and primary operational directives.
+- **Modular Rules**: `rules/*.md` allows organizing rules into modular files (e.g. `01-read-before-modifying.md`, `02-git-discipline.md`) that are automatically discovered and composed into the system prompt under `## Rules & Directives`.
+- **Custom Tools**: `tools/*.ts` exposes profile-exclusive tools discovered and loaded at runtime.
+
+### Loading & Dynamic Switching Lifecycle
+- **Startup Resolution**: Defaults to `coder`, respects CLI flag `pi --profile <name>`, or restores previous state from session history (`profile-state` entry).
+- **Runtime Interactive Switching**: `/switch <profile>` or `/profile <profile>` switches the active profile on the fly with autocomplete.
+- **Agent-Driven Switching**: The `switch_profile` tool enables the LLM to transition personas programmatically.
+- **Dynamic Profile Creation**: The `create_profile` tool enables user and LLM to build new custom personas with tailored system prompts, rules, tools, and thinking levels.
+- **KV Cache Invalidation Trade-off**:
+  When a profile switch occurs, `applyProfile` updates the active profile, thinking level, and tool whitelist. On the next turn, `before_agent_start` injects the new profile's system prompt. Because prompt caching requires exact prefix matching, changing the system prompt resets the prefix KV cache for subsequent turns while unlocking multi-persona flexibility in the same session.
+- **Tool Preservation**: Harness management tools (`create_profile` and `switch_profile`) are automatically maintained across tool whitelist updates.
 
 ---
 
