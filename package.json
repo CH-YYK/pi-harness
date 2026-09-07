@@ -1,7 +1,7 @@
 {
   "name": "pi-harness",
   "version": "0.1.0",
-  "description": "Pi Coding Agent profile harness with session-locked persona state and dynamic profile tools",
+  "description": "Pi Coding Agent profile harness with dynamic profile switching, modular rules, and profile creation tools",
   "type": "module",
   "main": "index.ts",
   "scripts": {

@@ -6,17 +6,23 @@ Modular profile management system & persona harness for the **[Pi Coding Agent](
 
 ## 🌟 Features
 
-1. **Session-Locked Startup Profile Pattern**:
-   * Activate personas via `pi --profile <name>` (or configure via session state).
-   * Profiles remain immutable across the session, guaranteeing 100% KV prefix cache hits on Claude 3.7 / Gemini 2.5 / GPT-4.5.
+1. **Flexible Profile Activation & Dynamic Switching**:
+   * Activate personas at startup via `pi --profile <name>` (default: `coder`).
+   * Switch active profiles on the fly mid-session via `/switch <name>`, `/profile <name>`, or the `switch_profile` tool.
+   * *Note on KV Caching*: Starting with a fixed profile preserves 100% KV prefix cache hits across turns. Switching profiles mid-session hot-swaps the system prompt and tool whitelist, resetting the prefix cache for subsequent turns to afford maximum multi-persona flexibility.
 2. **Prebuilt & Custom Profile Discovery**:
    * Bundled prebuilt personas: `profiles/coder/` (software architecture, implementation, refactoring, test execution).
    * Custom personas auto-discovered from `~/.pi/agent/profiles/`, `~/.pi/profiles/`, or `<project>/.pi/profiles/`.
-3. **Dynamic Profile-Scoped Tools**:
-   * Tools defined in `profiles/<profile_name>/tools/*.ts` are dynamically loaded and scoped exclusively to that persona whitelist.
-4. **Slash Commands**:
+3. **Modular Rule Organization**:
+   * Prompts can be composed of both `system.md` and modular rule files under `profiles/<profile_name>/rules/*.md`, cleanly organizing directives and constraints.
+4. **Dynamic Profile Tools**:
+   * `create_profile`: Create new custom personas with tailored system prompts, modular rules, thinking levels, and tool whitelists.
+   * `switch_profile`: LLM-callable tool to transition between personas dynamically.
+   * Profile-exclusive tools (e.g., `profiles/coder/tools/git_status.ts`) dynamically discovered and scoped to persona whitelists.
+5. **Interactive Slash Commands**:
    * `/profiles` — Inspect all discovered prebuilt and custom profiles.
-   * `/profile` — View current session's locked profile configuration and toolset.
+   * `/profile [name]` — View active session profile details or switch to a target profile.
+   * `/switch <name>` — Directly switch profiles with argument autocompletion.
 
 ---
 
@@ -52,6 +58,9 @@ pi --profile coder
 Inside an interactive session:
 * `/profiles` — List all discovered profiles
 * `/profile` — Show active session profile details
+* `/profile <name>` or `/switch <name>` — Switch active profile persona and toolset mid-session
+* Call `create_profile` via the agent — Create and register a new persona on the fly
+* Call `switch_profile` via the agent — Seamlessly transition personas programmatically
 
 ---
 
