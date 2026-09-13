@@ -55,7 +55,7 @@ profiles/
 
 ### Loading & Dynamic Switching Lifecycle
 - **Startup Resolution**: Defaults to `coder`, respects CLI flag `pi --profile <name>`, or restores previous state from session history (`profile-state` entry).
-- **Runtime Interactive Switching**: `/switch <profile>` or `/profile <profile>` switches the active profile on the fly with autocomplete.
+- **Runtime Interactive Switching**: `/profile-switch <profile>` or `/profile <profile>` switches the active profile on the fly with autocomplete.
 - **Agent-Driven Switching**: The `switch_profile` tool enables the LLM to transition personas programmatically.
 - **Dynamic Profile Creation**: The `create_profile` tool enables user and LLM to build new custom personas with tailored system prompts, rules, tools, and thinking levels.
 - **KV Cache Invalidation Trade-off**:

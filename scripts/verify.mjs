@@ -60,19 +60,19 @@ async function runVerify() {
   }
   console.log("   ✓ /profile command executed successfully with boxed output.");
 
-  // Test /switch command
-  const switchCmd = harnessExt.commands.get("switch");
+  // Test /profile-switch command
+  const switchCmd = harnessExt.commands.get("profile-switch");
   if (!switchCmd) {
-    throw new Error("Missing /switch slash command in pi-profile-harness!");
+    throw new Error("Missing /profile-switch slash command in pi-profile-harness!");
   }
-  console.log("   ✓ /switch command registered successfully.");
+  console.log("   ✓ /profile-switch command registered successfully.");
 
   // Test command completions
   const switchCompletions = await switchCmd.getArgumentCompletions?.("co");
   if (!switchCompletions?.some((c) => c.value === "coder")) {
-    throw new Error("/switch argument autocompletion failed to suggest 'coder'!");
+    throw new Error("/profile-switch argument autocompletion failed to suggest 'coder'!");
   }
-  console.log("   ✓ /switch argument autocompletion works.");
+  console.log("   ✓ /profile-switch argument autocompletion works.");
 
   // Test dynamic tool registration: git_status, create_profile, switch_profile
   const gitStatusTool = harnessExt.tools.get("git_status");
@@ -152,12 +152,12 @@ async function runVerify() {
     }
     console.log("   ✓ switch_profile tool executed successfully.");
 
-    // Test switching via /switch slash command
+    // Test switching via /profile-switch slash command
     await switchCmd.handler(testProfileName, mockCtx);
     if (!notified.includes(testProfileName) || !notified.includes("╭─") || !notified.includes("╰─")) {
-      throw new Error(`/switch command output was not properly wrapped in box borders!`);
+      throw new Error(`/profile-switch command output was not properly wrapped in box borders!`);
     }
-    console.log("   ✓ /switch slash command switched profile successfully with boxed output.");
+    console.log("   ✓ /profile-switch slash command switched profile successfully with boxed output.");
   } finally {
     // Clean up temporary test profile
     if (fs.existsSync(testProjectProfileDir)) {
