@@ -8,7 +8,7 @@
  *
  * Design Principles:
  * - Dynamic Profile Switching: Profiles can be selected at startup (`pi --profile <name>`)
- *   or switched on the fly mid-session via `/switch <name>`, `/profile <name>`, or the `switch_profile` tool.
+ *   or switched on the fly mid-session via `/profile-switch <name>`, `/profile <name>`, or the `switch_profile` tool.
  * - System Prompt & Toolset Hot-Swapping: Switching dynamically updates the active system prompt,
  *   profile-exclusive tool whitelist, and thinking level. Note: Changing the system prompt between turns
  *   resets the prefix KV cache for subsequent turns.
@@ -665,7 +665,7 @@ export default async function piHarnessExtension(pi: ExtensionAPI) {
 
       lines.push(
         "---",
-        "💡 Switch: /switch <name> or /profile <name>",
+        "💡 Switch: /profile-switch <name> or /profile <name>",
         "💡 Create: use create_profile tool or place files in ~/.pi/agent/profiles/<name>/"
       );
 
@@ -692,7 +692,7 @@ export default async function piHarnessExtension(pi: ExtensionAPI) {
             formatBox("Active Profile", [
               "Running in default mode (no profile active).",
               "---",
-              "💡 Switch to a profile via /switch <name> or /profile <name>",
+              "💡 Switch to a profile via /profile-switch <name> or /profile <name>",
             ]),
             "info"
           );
@@ -708,7 +708,7 @@ export default async function piHarnessExtension(pi: ExtensionAPI) {
           `Description  : ${activeProfile.meta.description}`,
           "---",
           "💡 Dynamic switching is active.",
-          "   Switch anytime via: /switch <name> or /profile <name>",
+          "   Switch anytime via: /profile-switch <name> or /profile <name>",
         ];
 
         ctx.ui.notify(formatBox(`Profile: ${activeProfile.name}`, lines), "info");
@@ -745,8 +745,8 @@ export default async function piHarnessExtension(pi: ExtensionAPI) {
     },
   });
 
-  // 7. Command: /switch - Shortcut to dynamically switch profile
-  pi.registerCommand("switch", {
+  // 7. Command: /profile-switch - Shortcut to dynamically switch profile
+  pi.registerCommand("profile-switch", {
     description: "Dynamically switch the active profile persona and toolset",
     getArgumentCompletions: (argumentPrefix: string) => {
       const allProfiles = loadAllProfiles(process.cwd());
@@ -761,7 +761,7 @@ export default async function piHarnessExtension(pi: ExtensionAPI) {
         const allProfiles = loadAllProfiles(ctx.cwd);
         const names = Array.from(allProfiles.keys()).join(", ");
         const lines = [
-          "Usage: /switch <profile-name>",
+          "Usage: /profile-switch <profile-name>",
           `Available profiles: ${names || "none"}`,
         ];
         ctx.ui.notify(formatBox("Switch Profile", lines), "warning");

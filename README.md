@@ -8,7 +8,7 @@ Modular profile management system & persona harness for the **[Pi Coding Agent](
 
 1. **Flexible Profile Activation & Dynamic Switching**:
    * Activate personas at startup via `pi --profile <name>` (default: `coder`).
-   * Switch active profiles on the fly mid-session via `/switch <name>`, `/profile <name>`, or the `switch_profile` tool.
+   * Switch active profiles on the fly mid-session via `/profile-switch <name>`, `/profile <name>`, or the `switch_profile` tool.
    * *Note on KV Caching*: Starting with a fixed profile preserves 100% KV prefix cache hits across turns. Switching profiles mid-session hot-swaps the system prompt and tool whitelist, resetting the prefix cache for subsequent turns to afford maximum multi-persona flexibility.
 2. **Prebuilt & Custom Profile Discovery**:
    * Bundled prebuilt personas: `profiles/coder/` (software architecture, implementation, refactoring, test execution).
@@ -22,7 +22,7 @@ Modular profile management system & persona harness for the **[Pi Coding Agent](
 5. **Interactive Slash Commands**:
    * `/profiles` — Inspect all discovered prebuilt and custom profiles.
    * `/profile [name]` — View active session profile details or switch to a target profile.
-   * `/switch <name>` — Directly switch profiles with argument autocompletion.
+   * `/profile-switch <name>` — Directly switch profiles with argument autocompletion.
 
 ---
 
@@ -59,7 +59,7 @@ pi --profile coder
 Inside an interactive session:
 * `/profiles` — List all discovered profiles
 * `/profile` — Show active session profile details
-* `/profile <name>` or `/switch <name>` — Switch active profile persona and toolset mid-session
+* `/profile <name>` or `/profile-switch <name>` — Switch active profile persona and toolset mid-session
 * Call `create_profile` via the agent — Create and register a new persona on the fly
 * Call `switch_profile` via the agent — Seamlessly transition personas programmatically
 
